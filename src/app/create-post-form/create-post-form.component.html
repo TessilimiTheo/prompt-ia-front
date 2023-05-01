@@ -1,0 +1,39 @@
+
+<div id="form" [formGroup]="createPostForm">
+  <label>Libellé</label>
+  <input id="label" type="text" formControlName="label"/>
+  <label>Thème</label>
+  <input id="theme" type="text" formControlName="theme"/>
+  <label>Type de Poste</label>
+  <div class="form-check-container">
+    <div class="form-check">
+      <input type="radio" class="form-check-input" id="radio1" name="isArticle" value="true" formControlName="isArticle" checked>Avec article
+      <label class="form-check-label" for="radio1"></label>
+    </div>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" id="radio2" name="isArticle" formControlName="isArticle" value="false">Sans Article
+      <label class="form-check-label" for="radio2"></label>
+    </div>
+  </div>
+  <label>Longueur maximum du poste</label>
+  <input type="number" formControlName="maxLength"/>
+  <label>Tonalité du poste</label>
+  <div class="form-check-container">
+    <div class="form-check">
+      <input type="radio" class="form-check-input" id="Professionel" name="tonality" value="Professionel" formControlName="tonality" checked>Professionelle
+      <label class="form-check-label" for="radio1"></label>
+    </div>
+  <div class="form-check">
+    <input type="radio" class="form-check-input" id="Amicale" name="tonality" value="Amicale" formControlName="tonality" >Amicale
+    <label class="form-check-label" for="radio2"></label>
+  </div>
+  <div class="form-check">
+    <input type="radio" class="form-check-input" name="tonality" formControlName="tonality" value="formelle">Formelle
+    <label class="form-check-label"></label>
+  </div>
+  </div>
+  <label>Hashtags</label>
+  <input type="text" formControlName="hashtag">
+  <button [class.loader]="isLoading" id="submit" (click)="generatePost()">Soumettre</button>
+</div>
+

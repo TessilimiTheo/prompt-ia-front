@@ -1,0 +1,24 @@
+#title{
+  margin-top: 30px;
+  text-align: center;
+  font-size: 3rem;
+  text-decoration: underline;
+}
+
+
+.content {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.form {
+  width: 70%;
+  justify-content: center;
+
+}
+
+.list{
+  width: 15%;
+  justify-content: center;
+
+}

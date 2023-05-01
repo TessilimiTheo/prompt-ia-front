@@ -1,0 +1,92 @@
+.form-check-container {
+  display: inline-flex;
+  flex-direction: row;
+  align-content: center;
+  margin: 30px;
+  max-width: 500px;
+  padding: 10px;
+}
+
+#form, .form-check {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.3);
+  margin: 50px auto;
+  max-width: 500px;
+  padding: 20px;
+}
+
+label {
+  color: #444444;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input[type="text"],
+input[type="number"] {
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.form-check {
+  margin-bottom: 2px;
+}
+
+.form-check-input {
+  margin-right: 10px;
+}
+
+#submit {
+  background-color: #0080ff;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 20px;
+  position: relative;
+  transition: padding-right .3s ease-out;
+}
+#submit:hover {
+  background-color: #0066cc;
+  cursor: pointer;
+}
+
+#submit.loader:after {
+  content: "";
+    position: absolute;
+    border-radius: 100%;
+    right: 6px;
+    top: 50%;
+    width: 0px;
+    height: 0px;
+    margin-top: -2px;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-left-color: #FFF;
+    border-top-color: #FFF;
+    animation: spin .6s infinite linear, grow .3s forwards ease-out;
+}
+@keyframes spin {
+    to {
+        transform: rotate(359deg);
+    }
+}
+@keyframes grow {
+    to {
+        width: 14px;
+        height: 14px;
+        margin-top: -8px;
+        right: 13px;
+    }
+}
