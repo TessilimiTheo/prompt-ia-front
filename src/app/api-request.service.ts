@@ -1,52 +1,57 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios'
+import axios from 'axios';
 import { environment } from '../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiRequestService {
-
-  constructor() { }
-
   instance = axios.create({
     baseURL: environment.apiURL,
-    headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"}
-});
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    timeout: 10000,
+  });
 
   async UserConnect(email: string) {
-    let uuid: string = ""
-    await this.instance.post('/customer', {email: email})
-      .then( async response => {
-        uuid = await response.data.id
+    let uuid = '';
+    await this.instance
+      .post('/customer', { email: email })
+      .then((response) => {
+        uuid = response.data.id;
+        console.log(uuid, 'test');
       })
-      .catch(e => {
-        console.log(e)
-      })
-    return uuid
+      .catch((e) => {
+        console.log(e);
+      });
+    console.log(uuid, 'test');
+    return uuid;
   }
 
   async generatePost(payload: any) {
-    let post: string = ""
-    await this.instance.post('/open-ai', {...payload})
-      .then( response => {
-        post = response.data
+    let post = '';
+    await this.instance
+      .post('/open-ai', { ...payload })
+      .then((response) => {
+        post = response.data;
       })
-      .catch(e => {
-        console.log(e)
-      })
-    return post
+      .catch((e) => {
+        console.log(e);
+      });
+    return post.trim();
   }
 
-  async getLastPost(user: string) {
-    let post: string = ""
-    await this.instance.get(`/prompt/${user}`)
-      .then( response => {
-        post = response.data
+  async getLastsPosts(user: string) {
+    let post = '';
+    await this.instance
+      .get(`/prompt/${user}`)
+      .then((response) => {
+        post = response.data;
       })
-      .catch(e => {
-        console.log(e)
-      })
-    return post
+      .catch((e) => {
+        console.log(e);
+      });
+    return post;
   }
 }

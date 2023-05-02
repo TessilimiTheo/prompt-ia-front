@@ -1,0 +1,24 @@
+div {
+  display: block;
+  margin: 50px auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+textarea {
+  margin-left: 10px;
+  display: grid;
+  overflow:hidden;
+  width: 90%;
+  min-width: 300px;
+  height: 300px;
+  resize: vertical;
+  font-size:14px;
+  padding: 5px;
+  border-radius:5px;
+  border:3px solid #556677;
+  grid-area: 1 / 1 / 2 / 2;
+
+}

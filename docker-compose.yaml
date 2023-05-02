@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      target: node_development
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - ./:/app
+    ports:
+      - "4200:4200"
+    restart: unless-stopped
+    environment:
+      - EXEC_ENV=development

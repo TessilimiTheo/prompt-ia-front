@@ -1,6 +1,6 @@
 <div class="content">
   <h2>Derniers Postes :</h2>
-  <div class="card" (click)="refreshFormData(lastPromptItem.options)" *ngFor="let lastPromptItem of lastPromptList">
+  <div class="card" (click)="refreshFormData(lastPromptItem.options, lastPromptItem.result)" *ngFor="let lastPromptItem of lastPromptList">
     <p class="card-label">{{lastPromptItem.label}}</p>
   </div>
 </div>

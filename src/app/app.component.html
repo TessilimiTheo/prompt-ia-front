@@ -1,9 +1,15 @@
 <body>
-<h1 id="title">Génération de Poste à l'aide de chatGPT</h1>
+<h1 id="title">Génération de poste à l'aide de chatGPT</h1>
 <app-connexion *ngIf="!user"></app-connexion>
   <div class="content">
-    <app-last-prompt-list class="list" *ngIf="user" [user]="user" (formOptions)="updateFormOptions($event)"></app-last-prompt-list>
-    <app-create-post-form class="form" (post)="newPost($event)" *ngIf="user" [user]="user" ></app-create-post-form>
+    <div class="left-content">
+      <app-last-prompt-list class="list" *ngIf="user" [user]="user" (formOptions)="updateFormOptions($event)" (postResponse)="updateResult($event)"></app-last-prompt-list>
+    </div>
+    <div class="right-content">
+      <div>
+        <app-create-post-form class="form" (post)="newPost($event)" *ngIf="user" [user]="user" ></app-create-post-form>
+        <app-ai-response class="ai-response" *ngIf="user" [post]="post"></app-ai-response>
+      </div>
+    </div>
   </div>
-  <app-ai-response *ngIf="post" [post]="post"></app-ai-response>
 </body>

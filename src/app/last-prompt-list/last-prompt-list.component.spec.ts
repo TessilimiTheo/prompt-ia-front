@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LastPromptListComponent } from './last-prompt-list.component';
@@ -8,9 +9,8 @@ describe('LastPromptListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LastPromptListComponent ]
-    })
-    .compileComponents();
+      declarations: [LastPromptListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LastPromptListComponent);
     component = fixture.componentInstance;

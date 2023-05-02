@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AiResponseComponent } from './ai-response.component';
+// eslint-disable-next-line import/no-unresolved
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 describe('AiResponseComponent', () => {
   let component: AiResponseComponent;
@@ -8,9 +8,8 @@ describe('AiResponseComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AiResponseComponent ]
-    })
-    .compileComponents();
+      declarations: [AiResponseComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AiResponseComponent);
     component = fixture.componentInstance;

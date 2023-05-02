@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { TestBed } from '@angular/core/testing';
 
 import { ApiRequestService } from './api-request.service';

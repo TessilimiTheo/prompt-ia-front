@@ -11,9 +11,37 @@
   justify-content: flex-start;
 }
 
-.form {
-  width: 70%;
+.left-content {
+  display: block;
+  padding-left: 30px;
+  width: 20%;
+}
+
+.right-content div {
+  display: flex;
   justify-content: center;
+  flex-direction: row;
+  gap: 2rem;
+}
+.right-content div + * {
+  width: 50%;
+}
+
+.right-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ai-response {
+  width: 50%;
+  justify-content: center;
+}
+
+.form {
+  min-width: 500px;
+  justify-content: center;
+  margin: auto;
 
 }
 

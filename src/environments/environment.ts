@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  apiURL: ""
+  production: true,
+  apiURL: 'https://prompt-ia-back.vercel.app/',
 };
