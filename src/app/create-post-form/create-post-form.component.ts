@@ -14,7 +14,7 @@ export class CreatePostFormComponent {
     isArticle: new FormControl('false'),
     maxLength: new FormControl(''),
     tonality: new FormControl('Amicale'),
-    hashtag: new FormControl(''),
+    hashtags: new FormControl(''),
   });
 
   @Input()
@@ -35,7 +35,7 @@ export class CreatePostFormComponent {
       isArticle: this.createPostForm.value.isArticle == 'true',
       contentLength: Number(this.createPostForm.value.maxLength),
       tonality: this.createPostForm.value.tonality,
-      hashtag: this.createPostForm.value.hashtag?.toString().split(';'),
+      hashtags: this.createPostForm.value.hashtags?.toString().split(';') ?? [],
       user: this.user,
     };
     this.isLoading = true;
@@ -56,7 +56,7 @@ export class CreatePostFormComponent {
     const formDataObject = JSON.parse(value);
     this.createPostForm.patchValue({
       theme: formDataObject.theme,
-      hashtag: formDataObject.hashtag,
+      hashtags: formDataObject.hashtags,
       maxLength: formDataObject.contentLength,
       isArticle: formDataObject.isArticle.toString(),
       tonality: formDataObject.tonality,
