@@ -1,21 +1,45 @@
-.form-check-container {
-  display: inline-flex;
-  flex-direction: row;
-  align-content: center;
-  margin: 30px;
-  max-width: 500px;
-  padding: 10px;
-}
-
 #form, .form-check {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.3);
-  margin: 50px auto;
   max-width: 500px;
   padding: 20px;
+}
+
+#form {
+  margin: 50px auto;
+}
+
+.form-check {
+  margin: auto;
+}
+
+.form-check-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin: 20px;
+  max-width: 500px;
+}
+
+.required:after{
+  margin-left: 2px;
+  content:"*";
+  color: #900a0a;
+  font-size: 0.9rem;
+  font-weight:bold;
+}
+
+.alert-error{
+  padding: 5px;
+  margin-bottom: 10px;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
 }
 
 label {

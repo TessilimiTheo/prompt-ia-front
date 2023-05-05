@@ -18,6 +18,10 @@ export class LastPromptListComponent implements OnInit {
   postResponse = new EventEmitter<string>();
 
   ngOnInit(): void {
+    this.refreshLastPost();
+  }
+
+  refreshLastPost() {
     this.apiRequestService.getLastsPosts(this.user).then((res) => {
       this.lastPromptList = Array.from(res);
     });

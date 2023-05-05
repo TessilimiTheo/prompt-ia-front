@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CreatePostFormComponent } from './create-post-form/create-post-form.component';
 import { LastPromptListComponent } from './last-prompt-list/last-prompt-list.component';
 import { AiResponseComponent } from './ai-response/ai-response.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { AiResponseComponent } from './ai-response/ai-response.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'ai-front';
+  title = 'Post AI';
   user?: string | null;
   post?: string;
   @ViewChild(CreatePostFormComponent)
@@ -20,13 +21,16 @@ export class AppComponent implements OnInit {
   @ViewChild(AiResponseComponent)
   private aiResponseComponent?: AiResponseComponent;
 
+  constructor(private titleService: Title) {}
+
   ngOnInit(): void {
     this.user = localStorage.getItem('user') ?? null;
+    this.titleService.setTitle(this.title);
   }
 
   newPost(value: string) {
     this.post = value;
-    this.lastPromptListComponent?.ngOnInit();
+    this.lastPromptListComponent?.refreshLastPost();
   }
 
   updateFormOptions(value: string) {

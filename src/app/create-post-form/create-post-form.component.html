@@ -1,9 +1,15 @@
 
 <div id="form" [formGroup]="createPostForm">
-  <label>Libellé</label>
+  <label for="label" class="required">Libellé</label>
   <input id="label" type="text" formControlName="label"/>
-  <label>Thème</label>
+    <div class="alert-error" *ngIf="createPostForm.controls['label'].errors && (createPostForm.controls['label'].touched || createPostForm.controls['label'].dirty)">
+      Libellé obligatoire
+    </div>
+  <label for="theme" class="required">Thème</label>
   <input id="theme" type="text" formControlName="theme"/>
+  <div class="alert-error" *ngIf="createPostForm.controls['theme'].errors && (createPostForm.controls['theme'].touched || createPostForm.controls['theme'].dirty)">
+      Thème obligatoire
+  </div>
   <label>Type de Poste</label>
   <div class="form-check-container">
     <div class="form-check">
@@ -15,8 +21,11 @@
       <label class="form-check-label" for="radio2"></label>
     </div>
   </div>
-  <label>Longueur maximum du poste</label>
-  <input type="number" formControlName="maxLength"/>
+  <label for="maxLength" class="required">Longueur maximum du poste</label>
+  <input id="maxLength" type="number" formControlName="maxLength"/>
+  <div class="alert-error" *ngIf="createPostForm.controls['maxLength'].errors && (createPostForm.controls['maxLength'].touched || createPostForm.controls['maxLength'].dirty)">
+      Longueur maximum obligatoire
+  </div>
   <label>Tonalité du poste</label>
   <div class="form-check-container">
     <div class="form-check">
@@ -32,7 +41,7 @@
     <label class="form-check-label"></label>
   </div>
   </div>
-  <label>Hashtags</label>
+  <label>Hashtags (Séparé par des ; )</label>
   <input type="text" formControlName="hashtags">
   <button [class.loader]="isLoading" id="submit" (click)="generatePost()">Soumettre</button>
 </div>

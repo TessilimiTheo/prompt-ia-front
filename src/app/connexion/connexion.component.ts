@@ -16,7 +16,7 @@ export class ConnexionComponent {
     private apiRequestService: ApiRequestService
   ) {}
   async onSubmit() {
-    const result = await this.apiRequestService
+    await this.apiRequestService
       .UserConnect(<string>this.user.value)
       .then((res) => {
         if (res != '') {
@@ -24,6 +24,5 @@ export class ConnexionComponent {
           window.location.reload();
         }
       });
-    console.log(result);
   }
 }

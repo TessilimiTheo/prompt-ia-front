@@ -11,7 +11,7 @@ export class ApiRequestService {
     headers: {
       'Content-Type': 'application/json',
     },
-    timeout: 10000,
+    timeout: 100000,
   });
 
   async UserConnect(email: string) {
@@ -20,12 +20,10 @@ export class ApiRequestService {
       .post('/customer', { email: email })
       .then((response) => {
         uuid = response.data.id;
-        console.log(uuid, 'test');
       })
       .catch((e) => {
         console.log(e);
       });
-    console.log(uuid, 'test');
     return uuid;
   }
 

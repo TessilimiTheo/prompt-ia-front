@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiRequestService } from '../api-request.service';
 
 @Component({
@@ -9,10 +9,10 @@ import { ApiRequestService } from '../api-request.service';
 })
 export class CreatePostFormComponent {
   createPostForm = new FormGroup({
-    label: new FormControl(''),
-    theme: new FormControl(''),
+    label: new FormControl('', Validators.required),
+    theme: new FormControl('', Validators.required),
     isArticle: new FormControl('false'),
-    maxLength: new FormControl(''),
+    maxLength: new FormControl('', Validators.required),
     tonality: new FormControl('Amicale'),
     hashtags: new FormControl(''),
   });
@@ -29,30 +29,38 @@ export class CreatePostFormComponent {
   constructor(private apiRequestService: ApiRequestService) {}
 
   generatePost() {
-    const payload = {
-      label: this.createPostForm.value.label,
-      theme: this.createPostForm.value.theme,
-      isArticle: this.createPostForm.value.isArticle == 'true',
-      contentLength: Number(this.createPostForm.value.maxLength),
-      tonality: this.createPostForm.value.tonality,
-      hashtags: this.createPostForm.value.hashtags?.toString().split(';') ?? [],
-      user: this.user,
-    };
-    this.isLoading = true;
-    console.log(this.isLoading);
-    this.apiRequestService
-      .generatePost(payload)
-      .then((res) => {
-        console.log(res);
-        this.post.emit(res);
-      })
-      .finally(() => {
-        this.isLoading = false;
-      });
+    Object.keys(this.createPostForm.controls).forEach((field) => {
+      const control = this.createPostForm.get(field);
+      if (control) {
+        control.markAsTouched({ onlySelf: true });
+      }
+    });
+
+    if (this.createPostForm.valid) {
+      const payload = {
+        label: this.createPostForm.value.label,
+        theme: this.createPostForm.value.theme,
+        isArticle: this.createPostForm.value.isArticle == 'true',
+        contentLength: Number(this.createPostForm.value.maxLength),
+        tonality: this.createPostForm.value.tonality,
+        hashtags:
+          this.createPostForm.value.hashtags?.toString().split(';') ?? [],
+        user: this.user,
+      };
+      this.isLoading = true;
+      this.apiRequestService
+        .generatePost(payload)
+        .then((res) => {
+          console.log(res);
+          this.post.emit(res);
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
+    }
   }
 
   updateFormData(value: string): void {
-    console.log(value);
     const formDataObject = JSON.parse(value);
     this.createPostForm.patchValue({
       theme: formDataObject.theme,
