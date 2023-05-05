@@ -7,3 +7,21 @@ html, body {
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.alert-error{
+  padding: 5px;
+  margin-bottom: 10px;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+
+.required:after{
+  margin-left: 2px;
+  content:"*";
+  color: #900a0a;
+  font-size: 0.9rem;
+  font-weight:bold;
+}
+

@@ -68,6 +68,7 @@ export class CreatePostFormComponent {
       maxLength: formDataObject.contentLength,
       isArticle: formDataObject.isArticle.toString(),
       tonality: formDataObject.tonality,
+      label: ""
     });
   }
 }

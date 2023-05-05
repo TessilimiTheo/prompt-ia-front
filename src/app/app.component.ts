@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   constructor(private titleService: Title) {}
 
   ngOnInit(): void {
-    this.user = localStorage.getItem('user') ?? null;
+    this.user = localStorage.getItem('post-ai-user') ?? null;
     this.titleService.setTitle(this.title);
   }
 
