@@ -3,9 +3,10 @@
 html, body {
   height: 100%;
   overflow: auto;
+  font-family: "Helvetica Neue", sans-serif;
 
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }
 
 .alert-error{
   padding: 5px;
